@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Permanent+Marker&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  transition: 0.2s ease;
+}
+.container {
+  position: relative;
+  width: 400px;
+  aspect-ratio: 5/5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(90deg);
+  z-index: 200;
+}
+.directions {
+  list-style-type: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 60px;
+  aspect-ratio: 5/5;
+  border-radius: 50%;
+  left: 0;
+  transform-origin: 250px;
+  transform: rotate(calc(360deg / 12 * var(--i)));
+  transition: 0.2s ease;
+  /* border: 3px solid white; */
+}
+.switch {
+  width: 40px;
+  aspect-ratio: 5/5;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+.distance {
+  max-width: 300px;
+  color: whitesmoke;
+  position: absolute;
+  z-index: 500;
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  transform: translateY(50px);
+  border-radius: 10px;
+  text-align: center;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+h4 {
+  color: whitesmoke;
+}
+.switch:active {
+  transform: translateX(5px) translateY(5px);
+  transition: 0.2s ease;
+}
+.current {
+  width: 80px !important;
+  background-color: #fba1a1;
+}
+@keyframes currentAnimation {
+  0% {
+    border-radius: 15px;
+    width: 40px;
+  }
+  50% {
+    border-radius: 50%;
+    width: 60px;
+  }
+  100% {
+    border-radius: 15px;
+    width: 40px;
+  }
+}
+@media screen and (max-width: 32rem) {
+  body {
+    height: 40vh;
+  }
+  .directions {
+    width: 40px;
+    transform-origin: 190px;
+  }
+  .current {
+    animation: 1.5s currentAnimation infinite;
+  }
+  .container {
+    width: 1%;
+  }
+  .directions {
+    border-radius: 15px;
+  }
+  .distance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(12rem);
+  }
+  .distance::before {
+    content: "";
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    width: 200px;
+    aspect-ratio: 5/5;
+    position: absolute;
+    z-index: 300;
+    border-radius: 50%;
+    padding: 0.5rem;
+    padding: 1.5rem;
+  }
+  .distance h4 {
+    font-size: 1.9rem;
+  }
+}
